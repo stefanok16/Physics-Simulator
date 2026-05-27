@@ -56,15 +56,17 @@ class Surface:
 def applyForce(obj,force):
     obj.forces.append(force)
 
-def updatePosition(obj):
+def updatePosition(obj,frate):
     if obj.netForce().mag > 0 and obj.netForce().t > 0:
         obj.accel.dir = obj.netForce().dir
-        obj.accel.mag = obj.netForce().mag
+        obj.accel.mag = (obj.netForce().mag) * obj.mass
         
         ti = obj.netForce().t
         for f in obj.forces:
             if f.t == ti:
-                f.t -= .02
+                f.t -= (frate/1000)
+                
+    
     
         
 
