@@ -42,6 +42,11 @@ class Object:
         netF = Force(math.sqrt(x1^2+y1^2),math.atan(y1/x1),t)
         return(netF)
     
+    def checkForces(self):
+        for f in self.forces():
+            if f.t>-1 and f.t <=0:
+                self.forces.remove(f)
+    
 class Surface:
     def __init__(self,name,x,y):
         self.name = name
