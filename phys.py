@@ -75,8 +75,8 @@ def updateAccel(obj,frate):
 
 def newCoords(obj,frate,xinit,yinit):
 
-    xnew = xinit + obj.vel.mag * (frate/1000) + 1/2 * obj.acc.mag * (frate/1000)**2
-    ynew = yinit + obj.vel.mag * (frate/1000) + 1/2 * obj.acc.mag * (frate/1000)**2
+    xnew = xinit + obj.vel.mag * (frate/1000) * math.cos(obj.vel.dir) + 1/2 * obj.acc.mag *math.cos(obj.acc.dir) * (frate/1000)**2
+    ynew = yinit + obj.vel.mag * (frate/1000) * math.sin(obj.vel.dir) + 1/2 * obj.acc.mag *math.sin(obj.acc.dir)* (frate/1000)**2
 
     return(xnew,ynew)
 

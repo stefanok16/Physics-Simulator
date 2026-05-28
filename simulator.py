@@ -15,24 +15,26 @@ clock = pygame.time.Clock()
 
 
 
-r = phys.Object("Rect",10)
+r = phys.Object("Rect",100)
 
-rgrav = phys.Force(9.8,(phys.twopi * 3)/4,-1)
-rnorm = phys.Force(9.8,phys.twopi/4,-1)
-rapp = phys.Force(100,0,1)
+#rgrav = phys.Force(9.8,(phys.twopi * 3)/4,-1)
+#rnorm = phys.Force(9.8,phys.twopi/4,-1)
+rapp = phys.Force(10,phys.twopi/4,1)
+rapp2 = phys.Force(10,2*phys.twopi/4,1)
 
-r.forces.append(rgrav)
-r.forces.append(rnorm)
+#r.forces.append(rgrav)
+#r.forces.append(rnorm)
 r.forces.append(rapp)
+r.forces.append(rapp2)
 
 entities = [r]
 
-r1 = pygame.Rect(0,0,10,10)
+r1 = pygame.Rect(400,300,10,10)
 
 objs = [r1]
 run = True
 while run:
-
+    screen.fill((0, 0, 0)) 
     pygame.draw.rect(screen, (255,0,0),r1)
 
     for event in pygame.event.get():
@@ -41,7 +43,7 @@ while run:
     
     for entity in entities:
         phys.updateAccel(entity,50)
-        entity.x, entity.y = newCoords(entity, 50,objs[entities.index(entity)].x, objs[entities.index(entity)].y )
+        entity.x, entity.y = phys.newCoords(entity, 50,objs[entities.index(entity)].x, objs[entities.index(entity)].y )
         objs[entities.index(entity)].x  = entity.x
         objs[entities.index(entity)].y = entity.y 
 
