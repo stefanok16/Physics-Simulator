@@ -1,5 +1,4 @@
 import pygame
-import math
 import phys 
 
 
@@ -19,13 +18,11 @@ r = phys.Object("Rect",10)
 
 #rgrav = phys.Force(9.8,(phys.twopi * 3)/4,-1)
 #rnorm = phys.Force(9.8,phys.twopi/4,-1)
-rapp = phys.Force(50,phys.twopi/4,1)
-rapp2 = phys.Force(50,3*phys.twopi/4,1)
+rapp = phys.Force(50, (1* phys.twopi)/4,1)
 
 #r.forces.append(rgrav)
 #r.forces.append(rnorm)
 r.forces.append(rapp)
-r.forces.append(rapp2)
 
 entities = [r]
 

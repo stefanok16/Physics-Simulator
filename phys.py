@@ -35,10 +35,11 @@ class Object:
         y1 = 0
         t = 99999999
         for f in forces:
+            
             if (f.time < t) and (f.time != -1):
                 t = f.time
-            x1+= f.mag * math.sin(f.dir)
-            y1+= f.mag * math.cos(f.dir)
+            y1+= f.mag * math.sin(f.dir)
+            x1+= f.mag * math.cos(f.dir)
         
         if x1 == 0:
             angle = twopi / 4
@@ -75,8 +76,8 @@ def updateAccel(obj,frate):
 
 def newCoords(obj,frate,xinit,yinit):
 
-    xnew = xinit + obj.vel.mag * (frate/1000) * math.cos(obj.vel.dir) + 1/2 * obj.acc.mag *math.cos(obj.acc.dir) * (frate/1000)**2
-    ynew = yinit + obj.vel.mag * (frate/1000) * math.sin(obj.vel.dir) + 1/2 * obj.acc.mag *math.sin(obj.acc.dir)* (frate/1000)**2
+    xnew = xinit + obj.vel.mag * (frate/1000)  * math.cos(obj.vel.dir) + 1/2 * obj.acc.mag  *math.cos(obj.acc.dir) * (frate/1000)**2
+    ynew = yinit + obj.vel.mag * (frate/1000)  * -1 * math.sin(obj.vel.dir) + 1/2 * obj.acc.mag * -1 *math.sin(obj.acc.dir)* (frate/1000)**2
 
     return(xnew,ynew)
 
