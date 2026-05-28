@@ -62,16 +62,26 @@ class Surface:
 def applyForce(obj,force):
     obj.forces.append(force)
 
-def updatePosition(obj,frate):
+def updateAccel(obj,frate):
     nf = obj.netForce(obj.forces)
-    
+
     if nf.mag > 0 and nf.time > 0:
         obj.acc = Acceleration((nf.mag) * obj.mass,nf.dir)
-        
+        obj.vel = Velocity((frate/1000) *obj.acc.mag, obj.acc.dir)
         ti = nf.time
         for f in obj.forces:
             if f.time == ti:
                 f.time -= (frate/1000)
+
+def newCoords(obj,frate,xinit,yinit):
+
+    xnew = xinit + obj.vel.mag * (frate/1000) + 1/2 * obj.acc.mag * (frate/1000)**2
+    ynew = yinit + obj.vel.mag * (frate/1000) + 1/2 * obj.acc.mag * (frate/1000)**2
+
+    return(xnew,ynew)
+
+
+
                 
     
     

@@ -29,6 +29,7 @@ entities = [r]
 
 r1 = pygame.Rect(0,0,10,10)
 
+objs = [r1]
 run = True
 while run:
 
@@ -39,7 +40,12 @@ while run:
             run = False
     
     for entity in entities:
-        phys.updatePosition(entity,50)
+        phys.updateAccel(entity,50)
+        entity.x, entity.y = newCoords(entity, 50,objs[entities.index(entity)].x, objs[entities.index(entity)].y )
+        objs[entities.index(entity)].x  = entity.x
+        objs[entities.index(entity)].y = entity.y 
+
+        
 
     clock.tick(50)
 
