@@ -15,12 +15,12 @@ clock = pygame.time.Clock()
 
 
 
-r = phys.Object("Rect",100)
+r = phys.Object("Rect",10)
 
 #rgrav = phys.Force(9.8,(phys.twopi * 3)/4,-1)
 #rnorm = phys.Force(9.8,phys.twopi/4,-1)
-rapp = phys.Force(10,phys.twopi/4,1)
-rapp2 = phys.Force(10,2*phys.twopi/4,1)
+rapp = phys.Force(50,phys.twopi/4,1)
+rapp2 = phys.Force(50,3*phys.twopi/4,1)
 
 #r.forces.append(rgrav)
 #r.forces.append(rnorm)
@@ -33,6 +33,8 @@ r1 = pygame.Rect(400,300,10,10)
 
 objs = [r1]
 run = True
+frame = 0
+
 while run:
     screen.fill((0, 0, 0)) 
     pygame.draw.rect(screen, (255,0,0),r1)
@@ -50,6 +52,13 @@ while run:
         
 
     clock.tick(50)
+
+    font = pygame.font.SysFont(None, 48)
+
+    frame +=1
+    text_surface = font.render('Frame:' +str(frame), True, (255, 255, 255))
+
+    screen.blit(text_surface, (15, 15))
 
     pygame.display.update()
 
