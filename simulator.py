@@ -16,11 +16,11 @@ clock = pygame.time.Clock()
 
 r = phys.Object("Rect",10)
 
-#rgrav = phys.Force(9.8,(phys.twopi * 3)/4,-1)
+rgrav = phys.Force(9.8*r.mass,(phys.twopi * -1)/4,-1)
 #rnorm = phys.Force(9.8,phys.twopi/4,-1)
-rapp = phys.Force(50, (1* phys.twopi)/4,1)
+rapp = phys.Force(100, (1.5* phys.twopi)/4,1)
 
-#r.forces.append(rgrav)
+r.forces.append(rgrav)
 #r.forces.append(rnorm)
 r.forces.append(rapp)
 

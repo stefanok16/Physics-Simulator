@@ -38,6 +38,7 @@ class Object:
             
             if (f.time < t) and (f.time != -1):
                 t = f.time
+            
             y1+= f.mag * math.sin(f.dir)
             x1+= f.mag * math.cos(f.dir)
         
@@ -73,6 +74,8 @@ def updateAccel(obj,frate):
         for f in obj.forces:
             if f.time == ti:
                 f.time -= (frate/1000)
+
+        print(obj.acc.dir)
 
 def newCoords(obj,frate,xinit,yinit):
 
