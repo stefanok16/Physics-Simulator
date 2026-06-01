@@ -1,7 +1,5 @@
 import math
 
-
-
 twopi = 2 * math.pi
 
 class Acceleration:
