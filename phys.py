@@ -73,8 +73,6 @@ def updateAccel(obj,frate):
             if f.time == ti:
                 f.time -= (frate/1000)
 
-        print(obj.acc.dir)
-
 def newCoords(obj,frate,xinit,yinit):
 
     xnew = xinit + obj.vel.mag * (frate/1000)  * math.cos(obj.vel.dir) + 1/2 * obj.acc.mag  *math.cos(obj.acc.dir) * (frate/1000)**2
